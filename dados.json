@@ -9,71 +9,71 @@
   "produtos": [
     {
       "id": 1,
-      "nome": "CX doce",
-      "categoria": "CX doce",
-      "preco_sugerido": 0,
-      "ativo": true
-    },
-    {
-      "id": 2,
-      "nome": "alfajor",
-      "categoria": "alfajor",
-      "preco_sugerido": 0,
-      "ativo": true
-    },
-    {
-      "id": 3,
-      "nome": "bolo",
-      "categoria": "bolo",
-      "preco_sugerido": 0,
-      "ativo": true
-    },
-    {
-      "id": 4,
-      "nome": "bolos",
-      "categoria": "bolos",
-      "preco_sugerido": 0,
-      "ativo": true
-    },
-    {
-      "id": 5,
       "nome": "brownie",
       "categoria": "brownie",
       "preco_sugerido": 0,
       "ativo": true
     },
     {
-      "id": 6,
-      "nome": "brownies",
-      "categoria": "brownies",
-      "preco_sugerido": 0,
-      "ativo": true
-    },
-    {
-      "id": 7,
-      "nome": "cookie",
-      "categoria": "cookie",
-      "preco_sugerido": 0,
-      "ativo": true
-    },
-    {
-      "id": 8,
+      "id": 2,
       "nome": "cookies",
       "categoria": "cookies",
       "preco_sugerido": 0,
       "ativo": true
     },
     {
-      "id": 9,
+      "id": 3,
+      "nome": "cx doces",
+      "categoria": "cx doces",
+      "preco_sugerido": 0,
+      "ativo": true
+    },
+    {
+      "id": 4,
+      "nome": "cookies grandes",
+      "categoria": "cookies grandes",
+      "preco_sugerido": 0,
+      "ativo": true
+    },
+    {
+      "id": 5,
       "nome": "cookies grande",
       "categoria": "cookies grande",
       "preco_sugerido": 0,
       "ativo": true
     },
     {
+      "id": 6,
+      "nome": "cookies pote",
+      "categoria": "cookies pote",
+      "preco_sugerido": 0,
+      "ativo": true
+    },
+    {
+      "id": 7,
+      "nome": "CX doce",
+      "categoria": "CX doce",
+      "preco_sugerido": 0,
+      "ativo": true
+    },
+    {
+      "id": 8,
+      "nome": "alfajor",
+      "categoria": "alfajor",
+      "preco_sugerido": 0,
+      "ativo": true
+    },
+    {
+      "id": 9,
+      "nome": "brownies",
+      "categoria": "brownies",
+      "preco_sugerido": 0,
+      "ativo": true
+    },
+    {
       "id": 10,
-      "nome": "cookies grandes",
-      "categoria": "cookies grandes",
+      "nome": "cookie",
+      "categoria": "cookie",
       "preco_sugerido": 0,
       "ativo": true
     },
@@ -86,22 +86,22 @@
     },
     {
       "id": 12,
-      "nome": "cookies pote",
-      "categoria": "cookies pote",
+      "nome": "grande",
+      "categoria": "grande",
       "preco_sugerido": 0,
       "ativo": true
     },
     {
       "id": 13,
-      "nome": "cx doces",
-      "categoria": "cx doces",
+      "nome": "bolo",
+      "categoria": "bolo",
       "preco_sugerido": 0,
       "ativo": true
     },
     {
       "id": 14,
-      "nome": "grande",
-      "categoria": "grande",
+      "nome": "bolos",
+      "categoria": "bolos",
       "preco_sugerido": 0,
       "ativo": true
     }
@@ -109,7 +109,7 @@
   "clientes": [
     {
       "id": 1,
-      "nome": "Adenancira",
+      "nome": "Cinthia",
       "telefone": "",
       "observacoes": ""
     },
@@ -121,211 +121,211 @@
     },
     {
       "id": 3,
-      "nome": "Bruno",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 4,
-      "nome": "Camila",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 5,
-      "nome": "Carlo Miguel",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 6,
-      "nome": "Carlos miguel",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 7,
-      "nome": "Carol",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 8,
-      "nome": "Cinthia",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 9,
-      "nome": "Cintia",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 10,
-      "nome": "Daiane",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 11,
-      "nome": "Danieli",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 12,
-      "nome": "Darcy",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 13,
-      "nome": "Dorys",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 14,
-      "nome": "Dra idiko",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 15,
-      "nome": "Elisangela",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 16,
-      "nome": "Eu",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 17,
-      "nome": "Fernanda",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 18,
       "nome": "Fernanda W",
       "telefone": "",
       "observacoes": ""
     },
     {
-      "id": 19,
-      "nome": "Grazi",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 20,
-      "nome": "Graziela",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 21,
-      "nome": "Gustavo",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 22,
-      "nome": "Ingrid",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 23,
-      "nome": "Jessica",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 24,
-      "nome": "Joao",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 25,
-      "nome": "Juliana",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 26,
-      "nome": "Marcio",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 27,
-      "nome": "Milena",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 28,
-      "nome": "Natalia",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 29,
-      "nome": "Pamela",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 30,
-      "nome": "Patricia",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 31,
-      "nome": "Renata",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 32,
-      "nome": "Ricardo",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 33,
-      "nome": "Rosilene",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 34,
-      "nome": "Sabrina",
-      "telefone": "",
-      "observacoes": ""
-    },
-    {
-      "id": 35,
+      "id": 4,
       "nome": "Taina",
       "telefone": "",
       "observacoes": ""
     },
     {
-      "id": 36,
+      "id": 5,
+      "nome": "Gustavo",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 6,
+      "nome": "Pamela",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 7,
+      "nome": "Juliana",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 8,
+      "nome": "Grazi",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 9,
+      "nome": "Milena",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 10,
+      "nome": "Natalia",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 11,
+      "nome": "Camila",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 12,
+      "nome": "Joao",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 13,
+      "nome": "Sabrina",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 14,
+      "nome": "Renata",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 15,
+      "nome": "Dorys",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 16,
+      "nome": "Bruno",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 17,
+      "nome": "Ricardo",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 18,
+      "nome": "Victoria",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 19,
+      "nome": "Cintia",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 20,
+      "nome": "Danieli",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 21,
+      "nome": "Carlo Miguel",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 22,
+      "nome": "Graziela",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 23,
+      "nome": "Eu",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 24,
+      "nome": "Carlos miguel",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 25,
+      "nome": "Rosilene",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 26,
+      "nome": "Ingrid",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 27,
+      "nome": "Carol",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 28,
+      "nome": "Darcy",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 29,
       "nome": "Thaise",
       "telefone": "",
       "observacoes": ""
     },
     {
+      "id": 30,
+      "nome": "Adenancira",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 31,
+      "nome": "Dra idiko",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 32,
+      "nome": "Fernanda",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 33,
+      "nome": "Patricia",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 34,
+      "nome": "Jessica",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 35,
+      "nome": "Elisangela",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
+      "id": 36,
+      "nome": "Marcio",
+      "telefone": "",
+      "observacoes": ""
+    },
+    {
       "id": 37,
-      "nome": "Victoria",
+      "nome": "Daiane",
       "telefone": "",
       "observacoes": ""
     }
@@ -334,17 +334,17 @@
     {
       "id": 1,
       "data": "2026-07-30",
-      "cliente_id": 8,
+      "cliente_id": 1,
       "cliente_nome": "Cinthia",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 10.0,
-      "status": "pago",
+      "valor_total": 10,
+      "status": "pendente",
       "observacoes": ""
     },
     {
@@ -356,79 +356,79 @@
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 10.0,
-      "status": "pago",
+      "valor_total": 10,
+      "status": "pendente",
       "observacoes": ""
     },
     {
       "id": 3,
       "data": "2026-07-30",
-      "cliente_id": 18,
+      "cliente_id": 3,
       "cliente_nome": "Fernanda W",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         },
         {
           "qtd": 1,
           "produto": "cookies",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 20.0,
-      "status": "pendente",
+      "valor_total": 20,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 4,
       "data": "2026-07-30",
-      "cliente_id": 35,
+      "cliente_id": 4,
       "cliente_nome": "Taina",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 10.0,
-      "status": "pendente",
+      "valor_total": 10,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 5,
       "data": "2026-07-30",
-      "cliente_id": 21,
+      "cliente_id": 5,
       "cliente_nome": "Gustavo",
       "itens": [
         {
           "qtd": 1,
           "produto": "cookies",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 10.0,
-      "status": "pendente",
+      "valor_total": 10,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 6,
       "data": "2026-07-30",
-      "cliente_id": 29,
+      "cliente_id": 6,
       "cliente_nome": "Pamela",
       "itens": [
         {
           "qtd": 1,
           "produto": "cookies",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 10.0,
+      "valor_total": 10,
       "status": "pago",
       "observacoes": ""
     },
@@ -441,155 +441,155 @@
         {
           "qtd": 2,
           "produto": "cx doces",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 20.0,
-      "status": "pago",
+      "valor_total": 20,
+      "status": "pendente",
       "observacoes": ""
     },
     {
       "id": 8,
       "data": "2026-07-24",
-      "cliente_id": 25,
+      "cliente_id": 7,
       "cliente_nome": "Juliana",
       "itens": [
         {
           "qtd": 2,
           "produto": "cookies grandes",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 20.0,
-      "status": "pago",
+      "valor_total": 20,
+      "status": "pendente",
       "observacoes": ""
     },
     {
       "id": 9,
       "data": "2026-07-24",
-      "cliente_id": 8,
+      "cliente_id": 1,
       "cliente_nome": "Cinthia",
       "itens": [
         {
           "qtd": 1,
           "produto": "cookies grande",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 10.0,
-      "status": "pendente",
+      "valor_total": 10,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 10,
       "data": "2026-07-24",
-      "cliente_id": 19,
+      "cliente_id": 8,
       "cliente_nome": "Grazi",
       "itens": [
         {
           "qtd": 1,
           "produto": "cookies pote",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 10.0,
-      "status": "pendente",
+      "valor_total": 10,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 11,
       "data": "2026-07-24",
-      "cliente_id": 27,
+      "cliente_id": 9,
       "cliente_nome": "Milena",
       "itens": [
         {
           "qtd": 1,
           "produto": "cx doces",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 10.0,
-      "status": "pendente",
+      "valor_total": 10,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 12,
       "data": "2026-07-24",
-      "cliente_id": 28,
+      "cliente_id": 10,
       "cliente_nome": "Natalia",
       "itens": [
         {
           "qtd": 1,
           "produto": "cookies pote",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 10.0,
-      "status": "pendente",
+      "valor_total": 10,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 13,
       "data": "2026-07-24",
-      "cliente_id": 4,
+      "cliente_id": 11,
       "cliente_nome": "Camila",
       "itens": [
         {
           "qtd": 1,
           "produto": "CX doce",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 10.0,
-      "status": "pendente",
+      "valor_total": 10,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 14,
       "data": "2026-07-24",
-      "cliente_id": 24,
+      "cliente_id": 12,
       "cliente_nome": "Joao",
       "itens": [
         {
           "qtd": 1,
           "produto": "cx doces",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 10.0,
-      "status": "pago",
+      "valor_total": 10,
+      "status": "pendente",
       "observacoes": ""
     },
     {
       "id": 15,
       "data": "2026-07-24",
-      "cliente_id": 34,
+      "cliente_id": 13,
       "cliente_nome": "Sabrina",
       "itens": [
         {
           "qtd": 1,
           "produto": "cx doces",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 10.0,
-      "status": "pago",
+      "valor_total": 10,
+      "status": "pendente",
       "observacoes": ""
     },
     {
       "id": 16,
       "data": "2026-07-24",
-      "cliente_id": 31,
+      "cliente_id": 14,
       "cliente_nome": "Renata",
       "itens": [
         {
           "qtd": 1,
           "produto": "cx doces",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 10.0,
-      "status": "pendente",
+      "valor_total": 10,
+      "status": "pago",
       "observacoes": ""
     },
     {
@@ -601,80 +601,80 @@
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 7.0
+          "valor_unitario": 7
         },
         {
           "qtd": 1,
           "produto": "alfajor",
-          "valor_unitario": 7.0
+          "valor_unitario": 7
         }
       ],
-      "valor_total": 14.0,
-      "status": "pago",
+      "valor_total": 14,
+      "status": "pendente",
       "observacoes": ""
     },
     {
       "id": 18,
       "data": "2026-07-17",
-      "cliente_id": 13,
+      "cliente_id": 15,
       "cliente_nome": "Dorys",
       "itens": [
         {
           "qtd": 2,
           "produto": "alfajor",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 12.0,
-      "status": "pendente",
+      "valor_total": 12,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 19,
       "data": "2026-07-17",
-      "cliente_id": 3,
+      "cliente_id": 16,
       "cliente_nome": "Bruno",
       "itens": [
         {
           "qtd": 2,
           "produto": "brownie",
-          "valor_unitario": 8.0
+          "valor_unitario": 8
         }
       ],
-      "valor_total": 16.0,
-      "status": "pendente",
+      "valor_total": 16,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 20,
       "data": "2026-07-17",
-      "cliente_id": 34,
+      "cliente_id": 13,
       "cliente_nome": "Sabrina",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 8.0
+          "valor_unitario": 8
         }
       ],
-      "valor_total": 8.0,
-      "status": "pendente",
+      "valor_total": 8,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 21,
       "data": "2026-07-10",
-      "cliente_id": 3,
+      "cliente_id": 16,
       "cliente_nome": "Bruno",
       "itens": [
         {
           "qtd": 2,
           "produto": "brownies",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 12.0,
-      "status": "pendente",
+      "valor_total": 12,
+      "status": "pago",
       "observacoes": ""
     },
     {
@@ -686,59 +686,59 @@
         {
           "qtd": 2,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 12.0,
-      "status": "pago",
+      "valor_total": 12,
+      "status": "pendente",
       "observacoes": ""
     },
     {
       "id": 23,
       "data": "2026-07-10",
-      "cliente_id": 8,
+      "cliente_id": 1,
       "cliente_nome": "Cinthia",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 5.0
+          "valor_unitario": 5
         }
       ],
-      "valor_total": 5.0,
-      "status": "pendente",
+      "valor_total": 5,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 24,
       "data": "2026-07-10",
-      "cliente_id": 32,
+      "cliente_id": 17,
       "cliente_nome": "Ricardo",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 5.0
+          "valor_unitario": 5
         }
       ],
-      "valor_total": 5.0,
-      "status": "pago",
+      "valor_total": 5,
+      "status": "pendente",
       "observacoes": ""
     },
     {
       "id": 25,
       "data": "2026-07-10",
-      "cliente_id": 37,
+      "cliente_id": 18,
       "cliente_nome": "Victoria",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 5.0
+          "valor_unitario": 5
         }
       ],
-      "valor_total": 5.0,
-      "status": "pendente",
+      "valor_total": 5,
+      "status": "pago",
       "observacoes": ""
     },
     {
@@ -750,75 +750,75 @@
         {
           "qtd": 2,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 12.0,
-      "status": "pendente",
+      "valor_total": 12,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 27,
       "data": "2026-07-01",
-      "cliente_id": 34,
+      "cliente_id": 13,
       "cliente_nome": "Sabrina",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 6.0,
-      "status": "pendente",
+      "valor_total": 6,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 28,
       "data": "2026-07-01",
-      "cliente_id": 9,
+      "cliente_id": 19,
       "cliente_nome": "Cintia",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 6.0,
-      "status": "pendente",
+      "valor_total": 6,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 29,
       "data": "2026-07-01",
-      "cliente_id": 11,
+      "cliente_id": 20,
       "cliente_nome": "Danieli",
       "itens": [
         {
           "qtd": 2,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 12.0,
-      "status": "pendente",
+      "valor_total": 12,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 30,
       "data": "2026-07-01",
-      "cliente_id": 3,
+      "cliente_id": 16,
       "cliente_nome": "Bruno",
       "itens": [
         {
           "qtd": 3,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 18.0,
-      "status": "pendente",
+      "valor_total": 18,
+      "status": "pago",
       "observacoes": ""
     },
     {
@@ -838,77 +838,77 @@
           "valor_unitario": 5.67
         }
       ],
-      "valor_total": 17.0,
-      "status": "pendente",
+      "valor_total": 17,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 32,
       "data": "2026-06-22",
-      "cliente_id": 5,
+      "cliente_id": 21,
       "cliente_nome": "Carlo Miguel",
       "itens": [
         {
           "qtd": 1,
           "produto": "alfajor",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         },
         {
           "qtd": 1,
           "produto": "cookies",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 12.0,
-      "status": "pendente",
+      "valor_total": 12,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 33,
       "data": "2026-06-22",
-      "cliente_id": 20,
+      "cliente_id": 22,
       "cliente_nome": "Graziela",
       "itens": [
         {
           "qtd": 1,
           "produto": "cookies",
-          "valor_unitario": 7.0
+          "valor_unitario": 7
         }
       ],
-      "valor_total": 7.0,
-      "status": "pendente",
+      "valor_total": 7,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 34,
       "data": "2026-06-22",
-      "cliente_id": 16,
+      "cliente_id": 23,
       "cliente_nome": "Eu",
       "itens": [
         {
           "qtd": 2,
           "produto": "cookies",
-          "valor_unitario": 7.0
+          "valor_unitario": 7
         }
       ],
-      "valor_total": 14.0,
-      "status": "pendente",
+      "valor_total": 14,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 35,
       "data": "2026-06-10",
-      "cliente_id": 6,
+      "cliente_id": 24,
       "cliente_nome": "Carlos miguel",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 6.0,
-      "status": "pendente",
+      "valor_total": 6,
+      "status": "pago",
       "observacoes": ""
     },
     {
@@ -920,91 +920,91 @@
         {
           "qtd": 2,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 12.0,
-      "status": "pendente",
+      "valor_total": 12,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 37,
       "data": "2026-06-10",
-      "cliente_id": 33,
+      "cliente_id": 25,
       "cliente_nome": "Rosilene",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 6.0,
-      "status": "pendente",
+      "valor_total": 6,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 38,
       "data": "2026-06-10",
-      "cliente_id": 22,
+      "cliente_id": 26,
       "cliente_nome": "Ingrid",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 6.0,
-      "status": "pendente",
+      "valor_total": 6,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 39,
       "data": "2026-06-10",
-      "cliente_id": 7,
+      "cliente_id": 27,
       "cliente_nome": "Carol",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 6.0,
-      "status": "pendente",
+      "valor_total": 6,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 40,
       "data": "2026-06-10",
-      "cliente_id": 20,
+      "cliente_id": 22,
       "cliente_nome": "Graziela",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 6.0,
-      "status": "pendente",
+      "valor_total": 6,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 41,
       "data": "2026-06-10",
-      "cliente_id": 12,
+      "cliente_id": 28,
       "cliente_nome": "Darcy",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 6.0,
-      "status": "pendente",
+      "valor_total": 6,
+      "status": "pago",
       "observacoes": ""
     },
     {
@@ -1016,154 +1016,154 @@
         {
           "qtd": 2,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 12.0,
-      "status": "pendente",
+      "valor_total": 12,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 43,
       "data": "2026-06-03",
-      "cliente_id": 20,
+      "cliente_id": 22,
       "cliente_nome": "Graziela",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 6.0,
-      "status": "pendente",
+      "valor_total": 6,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 44,
       "data": "2026-06-03",
-      "cliente_id": 36,
+      "cliente_id": 29,
       "cliente_nome": "Thaise",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 6.0,
-      "status": "pendente",
+      "valor_total": 6,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 45,
       "data": "2026-06-03",
-      "cliente_id": 22,
+      "cliente_id": 26,
       "cliente_nome": "Ingrid",
       "itens": [
         {
           "qtd": 2,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 12.0,
-      "status": "pendente",
+      "valor_total": 12,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 46,
       "data": "2026-06-03",
-      "cliente_id": 1,
+      "cliente_id": 30,
       "cliente_nome": "Adenancira",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 6.0,
-      "status": "pendente",
+      "valor_total": 6,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 47,
       "data": "2026-06-03",
-      "cliente_id": 33,
+      "cliente_id": 25,
       "cliente_nome": "Rosilene",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 6.0,
-      "status": "pendente",
+      "valor_total": 6,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 48,
       "data": "2026-06-03",
-      "cliente_id": 14,
+      "cliente_id": 31,
       "cliente_nome": "Dra idiko",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 6.0,
-      "status": "pendente",
+      "valor_total": 6,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 49,
       "data": "2026-06-03",
-      "cliente_id": 17,
+      "cliente_id": 32,
       "cliente_nome": "Fernanda",
       "itens": [
         {
           "qtd": 3,
           "produto": "cookies",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 18.0,
-      "status": "pendente",
+      "valor_total": 18,
+      "status": "pago",
       "observacoes": ""
     },
     {
       "id": 50,
       "data": "2026-05-19",
-      "cliente_id": 3,
+      "cliente_id": 16,
       "cliente_nome": "Bruno",
       "itens": [
         {
           "qtd": 2,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 12.0,
+      "valor_total": 12,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 51,
       "data": "2026-05-19",
-      "cliente_id": 30,
+      "cliente_id": 33,
       "cliente_nome": "Patricia",
       "itens": [
         {
           "qtd": 2,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 12.0,
+      "valor_total": 12,
       "status": "pago",
       "observacoes": ""
     },
@@ -1176,42 +1176,42 @@
         {
           "qtd": 3,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 18.0,
+      "valor_total": 18,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 53,
       "data": "2026-05-06",
-      "cliente_id": 8,
+      "cliente_id": 1,
       "cliente_nome": "Cinthia",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 6.0,
+      "valor_total": 6,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 54,
       "data": "2026-05-06",
-      "cliente_id": 23,
+      "cliente_id": 34,
       "cliente_nome": "Jessica",
       "itens": [
         {
           "qtd": 2,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 12.0,
+      "valor_total": 12,
       "status": "pago",
       "observacoes": ""
     },
@@ -1224,42 +1224,42 @@
         {
           "qtd": 2,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 12.0,
+      "valor_total": 12,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 56,
       "data": "2026-05-06",
-      "cliente_id": 13,
+      "cliente_id": 15,
       "cliente_nome": "Dorys",
       "itens": [
         {
           "qtd": 2,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 12.0,
+      "valor_total": 12,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 57,
       "data": "2026-04-24",
-      "cliente_id": 8,
+      "cliente_id": 1,
       "cliente_nome": "Cinthia",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 9.0
+          "valor_unitario": 9
         }
       ],
-      "valor_total": 9.0,
+      "valor_total": 9,
       "status": "pago",
       "observacoes": ""
     },
@@ -1272,74 +1272,74 @@
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 9.0
+          "valor_unitario": 9
         }
       ],
-      "valor_total": 9.0,
+      "valor_total": 9,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 59,
       "data": "2026-04-24",
-      "cliente_id": 22,
+      "cliente_id": 26,
       "cliente_nome": "Ingrid",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 9.0
+          "valor_unitario": 9
         }
       ],
-      "valor_total": 9.0,
+      "valor_total": 9,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 60,
       "data": "2026-04-24",
-      "cliente_id": 36,
+      "cliente_id": 29,
       "cliente_nome": "Thaise",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 9.0
+          "valor_unitario": 9
         }
       ],
-      "valor_total": 9.0,
+      "valor_total": 9,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 61,
       "data": "2026-04-24",
-      "cliente_id": 15,
+      "cliente_id": 35,
       "cliente_nome": "Elisangela",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 9.0
+          "valor_unitario": 9
         }
       ],
-      "valor_total": 9.0,
+      "valor_total": 9,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 62,
       "data": "2026-04-24",
-      "cliente_id": 3,
+      "cliente_id": 16,
       "cliente_nome": "Bruno",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 9.0
+          "valor_unitario": 9
         }
       ],
-      "valor_total": 9.0,
+      "valor_total": 9,
       "status": "pago",
       "observacoes": ""
     },
@@ -1352,17 +1352,17 @@
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 10.0,
+      "valor_total": 10,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 64,
       "data": "2026-03-02",
-      "cliente_id": 23,
+      "cliente_id": 34,
       "cliente_nome": "Jessica",
       "itens": [
         {
@@ -1376,23 +1376,23 @@
           "valor_unitario": 7.33
         }
       ],
-      "valor_total": 22.0,
+      "valor_total": 22,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 65,
       "data": "2026-03-02",
-      "cliente_id": 26,
+      "cliente_id": 36,
       "cliente_nome": "Marcio",
       "itens": [
         {
           "qtd": 2,
           "produto": "cookies",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 20.0,
+      "valor_total": 20,
       "status": "pago",
       "observacoes": ""
     },
@@ -1405,31 +1405,31 @@
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         },
         {
           "qtd": 1,
           "produto": "cookies",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 12.0,
+      "valor_total": 12,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 67,
       "data": "2026-03-02",
-      "cliente_id": 16,
+      "cliente_id": 23,
       "cliente_nome": "Eu",
       "itens": [
         {
           "qtd": 1,
           "produto": "cookie",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 6.0,
+      "valor_total": 6,
       "status": "pago",
       "observacoes": ""
     },
@@ -1442,177 +1442,177 @@
         {
           "qtd": 2,
           "produto": "alfajor",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 20.0,
+      "valor_total": 20,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 69,
       "data": "2026-02-23",
-      "cliente_id": 4,
+      "cliente_id": 11,
       "cliente_nome": "Camila",
       "itens": [
         {
           "qtd": 1,
           "produto": "alfajor",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 10.0,
+      "valor_total": 10,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 70,
       "data": "2026-02-23",
-      "cliente_id": 11,
+      "cliente_id": 20,
       "cliente_nome": "Danieli",
       "itens": [
         {
           "qtd": 1,
           "produto": "alfajor",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 10.0,
+      "valor_total": 10,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 71,
       "data": "2026-02-23",
-      "cliente_id": 13,
+      "cliente_id": 15,
       "cliente_nome": "Dorys",
       "itens": [
         {
           "qtd": 1,
           "produto": "alfajor",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 10.0,
+      "valor_total": 10,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 72,
       "data": "2026-02-23",
-      "cliente_id": 19,
+      "cliente_id": 8,
       "cliente_nome": "Grazi",
       "itens": [
         {
           "qtd": 1,
           "produto": "alfajor",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 10.0,
+      "valor_total": 10,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 73,
       "data": "2026-02-23",
-      "cliente_id": 16,
+      "cliente_id": 23,
       "cliente_nome": "Eu",
       "itens": [
         {
           "qtd": 1,
           "produto": "alfajor",
-          "valor_unitario": 8.0
+          "valor_unitario": 8
         }
       ],
-      "valor_total": 8.0,
+      "valor_total": 8,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 74,
       "data": "2026-02-03",
-      "cliente_id": 13,
+      "cliente_id": 15,
       "cliente_nome": "Dorys",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 7.0
+          "valor_unitario": 7
         }
       ],
-      "valor_total": 7.0,
+      "valor_total": 7,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 75,
       "data": "2026-02-03",
-      "cliente_id": 9,
+      "cliente_id": 19,
       "cliente_nome": "Cintia",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 7.0
+          "valor_unitario": 7
         }
       ],
-      "valor_total": 7.0,
+      "valor_total": 7,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 76,
       "data": "2026-02-03",
-      "cliente_id": 11,
+      "cliente_id": 20,
       "cliente_nome": "Danieli",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 10.0,
+      "valor_total": 10,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 77,
       "data": "2026-02-03",
-      "cliente_id": 22,
+      "cliente_id": 26,
       "cliente_nome": "Ingrid",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 7.0
+          "valor_unitario": 7
         }
       ],
-      "valor_total": 7.0,
+      "valor_total": 7,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 78,
       "data": "2026-02-03",
-      "cliente_id": 10,
+      "cliente_id": 37,
       "cliente_nome": "Daiane",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 10.0,
+      "valor_total": 10,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 79,
       "data": "2026-02-03",
-      "cliente_id": 3,
+      "cliente_id": 16,
       "cliente_nome": "Bruno",
       "itens": [
         {
@@ -1621,39 +1621,39 @@
           "valor_unitario": 8.5
         }
       ],
-      "valor_total": 17.0,
+      "valor_total": 17,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 80,
       "data": "2026-02-03",
-      "cliente_id": 30,
+      "cliente_id": 33,
       "cliente_nome": "Patricia",
       "itens": [
         {
           "qtd": 1,
           "produto": "brownie",
-          "valor_unitario": 10.0
+          "valor_unitario": 10
         }
       ],
-      "valor_total": 10.0,
+      "valor_total": 10,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 81,
       "data": "2026-01-29",
-      "cliente_id": 34,
+      "cliente_id": 13,
       "cliente_nome": "Sabrina",
       "itens": [
         {
           "qtd": 1,
           "produto": "bolo",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 6.0,
+      "valor_total": 6,
       "status": "pago",
       "observacoes": ""
     },
@@ -1666,58 +1666,58 @@
         {
           "qtd": 1,
           "produto": "bolo",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 6.0,
+      "valor_total": 6,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 83,
       "data": "2026-01-29",
-      "cliente_id": 22,
+      "cliente_id": 26,
       "cliente_nome": "Ingrid",
       "itens": [
         {
           "qtd": 1,
           "produto": "bolo",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 6.0,
+      "valor_total": 6,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 84,
       "data": "2026-01-29",
-      "cliente_id": 24,
+      "cliente_id": 12,
       "cliente_nome": "Joao",
       "itens": [
         {
           "qtd": 1,
           "produto": "bolo",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 6.0,
+      "valor_total": 6,
       "status": "pago",
       "observacoes": ""
     },
     {
       "id": 85,
       "data": "2026-01-29",
-      "cliente_id": 32,
+      "cliente_id": 17,
       "cliente_nome": "Ricardo",
       "itens": [
         {
           "qtd": 2,
           "produto": "bolos",
-          "valor_unitario": 6.0
+          "valor_unitario": 6
         }
       ],
-      "valor_total": 12.0,
+      "valor_total": 12,
       "status": "pago",
       "observacoes": ""
     }
