@@ -319,18 +319,34 @@ function carregarDadosEmbutidos() {
 }
 
 async function tentarCarregarJSON() {
-  try {
-    const response = await fetch('dados.json');
-    if (!response.ok) throw new Error('HTTP ' + response.status);
-    const dados = await response.json();
-    carregarDadosJSON(dados);
-    console.log('[App] Dados carregados de dados.json');
-    showToast('✅ Dados carregados de dados.json');
-  } catch (err) {
-    console.log('[App] Não foi possível carregar dados.json:', err.message);
-    if (!loadData()) { carregarDadosEmbutidos(); }
-    else { atualizarInfoFonte(); }
+  // PRIORIDADE 1: Se ja tem dados no navegador, usa eles (preserva alteracoes do usuario)
+  if (loadData()) {
+    console.log('[App] Dados carregados do navegador (localStorage).');
+    atualizarInfoFonte();
+    return;
   }
+
+  // PRIORIDADE 2: Primeira vez - tenta carregar do dados.json
+  if (window.location.protocol !== 'file:') {
+    try {
+      const url = new URL('dados.json', window.location.href).href;
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      const dados = await response.json();
+      carregarDadosJSON(dados);
+      console.log('[App] Dados carregados de dados.json (primeira vez)');
+      showToast('✅ Dados carregados de dados.json');
+      return;
+    } catch (err) {
+      console.log('[App] Não foi possível carregar dados.json:', err.message);
+    }
+  } else {
+    console.log('[App] Modo arquivo local detectado.');
+  }
+
+  // PRIORIDADE 3: Fallback - dados embutidos
+  carregarDadosEmbutidos();
+  console.log('[App] Dados embutidos carregados (fallback).');
 }
 
 function atualizarInfoFonte() {
