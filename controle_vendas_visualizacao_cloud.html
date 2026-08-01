@@ -152,7 +152,6 @@
 <div class="toast" id="toast"></div>
 
 <script>
-// ========== CONFIGURACAO JSONBIN.IO ==========
 const BIN_ID = '6a6d431bda38895dfeaad903';
 const MASTER_KEY = '$2a$10$rxdZKKb3m/E6u8gu435sIORq.SVWjW8FNfkFzZ/nLT5af2N2i7Xma';
 const BIN_URL = 'https://api.jsonbin.io/v3/b/' + BIN_ID;
@@ -203,13 +202,12 @@ async function loadFromCloud() {
 }
 
 function exportarCSV() {
-  let csv = 'id;data;cliente;produtos;qtd_total;valor_total;status
-';
+  let csv = 'id;data;cliente;produtos;qtd_total;valor_total;status' + String.fromCharCode(10);
   vendas.forEach(v => {
     const produtos = Array.isArray(v.itens) ? v.itens.map(i => i.qtd + 'x ' + i.produto).join('; ') : '';
     const qtdTotal = Array.isArray(v.itens) ? v.itens.reduce((s, i) => s + (i.qtd || 0), 0) : 0;
-    csv += [v.id || '', v.data, '"' + v.cliente + '"', '"' + produtos + '"', qtdTotal, v.valor.toFixed(2).replace('.', ','), v.status].join(';') + '
-';
+    const valorStr = v.valor.toFixed(2).replace('.', ',');
+    csv += [v.id || '', v.data, '"' + v.cliente + '"', '"' + produtos + '"', qtdTotal, valorStr, v.status].join(';') + String.fromCharCode(10);
   });
   const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8' });
   const url = URL.createObjectURL(blob);
