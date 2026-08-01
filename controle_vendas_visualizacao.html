@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Controle de Vendas - Doces</title>
+<style>
+  :root {
+    --bg: #0f0f11; --surface: #1a1a1e; --surface-hover: #222228; --border: #2a2a30;
+    --text: #f0f0f5; --text-secondary: #a0a0b0; --text-muted: #6b6b7b;
+    --accent: #6366f1; --accent-hover: #818cf8;
+    --success: #22c55e; --success-bg: rgba(34,197,94,0.12);
+    --warning: #f59e0b; --warning-bg: rgba(245,158,11,0.12);
+    --danger: #ef4444; --danger-bg: rgba(239,68,68,0.12);
+    --radius: 12px; --radius-sm: 8px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.4); --shadow-lg: 0 8px 40px rgba(0,0,0,0.6);
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --transition: 0.18s ease;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh; padding-bottom: 40px; }
+  .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+  header { padding: 24px 0 16px; border-bottom: 1px solid var(--border); margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  header h1 { font-size: 22px; font-weight: 600; letter-spacing: -0.3px; }
+  header .subtitle { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px; border-radius: var(--radius-sm); border: none; font-size: 14px; font-weight: 500; cursor: pointer; background: var(--surface); color: var(--text); transition: var(--transition); }
+  .btn:hover { background: var(--surface-hover); }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-success { background: var(--success-bg); color: var(--success); }
+  .btn-success:hover { background: rgba(34,197,94,0.2); }
+  .btn-danger { background: var(--danger-bg); color: var(--danger); }
+  .btn-danger:hover { background: rgba(239,68,68,0.2); }
+  .btn-sm { padding: 6px 12px; font-size: 12px; }
+  .tabs { display: flex; gap: 4px; margin-bottom: 20px; background: var(--surface); padding: 4px; border-radius: var(--radius-sm); overflow-x: auto; }
+  .tab { padding: 10px 16px; border-radius: 8px; border: none; background: transparent; color: var(--text-secondary); font-size: 14px; font-weight: 500; cursor: pointer; white-space: nowrap; transition: var(--transition); font-family: inherit; }
+  .tab:hover { color: var(--text); }
+  .tab.active { background: var(--bg); color: var(--text); box-shadow: 0 1px 4px rgba(0,0,0,0.3); }
+  .panel { display: none; animation: fadeIn 0.25s ease; }
+  .panel.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin-bottom: 16px; box-shadow: var(--shadow); }
+  .card-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 20px; }
+  .stat-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 16px; transition: var(--transition); }
+  .stat-box:hover { background: var(--surface-hover); }
+  .stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .stat-value { font-size: 26px; font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums; }
+  .stat-sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+  .stat-value.success { color: var(--success); }
+  .stat-value.danger { color: var(--danger); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { text-align: left; padding: 10px 8px; color: var(--text-muted); font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border); }
+  td { padding: 10px 8px; color: var(--text); border-bottom: 1px solid var(--border); vertical-align: middle; }
+  tr:hover td { background: var(--surface-hover); }
+  tr:last-child td { border-bottom: none; }
+  .text-right { text-align: right; }
+  .text-center { text-align: center; }
+  .valor { font-variant-numeric: tabular-nums; font-weight: 500; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; }
+  .badge-pago { background: var(--success-bg); color: var(--success); }
+  .badge-pendente { background: var(--warning-bg); color: var(--warning); }
+  .form-group { margin-bottom: 16px; }
+  .form-label { display: block; font-size: 13px; font-weight: 500; color: var(--text-secondary); margin-bottom: 6px; }
+  .form-input, .form-select { width: 100%; padding: 11px 14px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); color: var(--text); font-size: 14px; outline: none; transition: var(--transition); font-family: inherit; }
+  .form-input:focus, .form-select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(99,102,241,0.15); }
+  .form-input::placeholder { color: var(--text-muted); }
+  .form-input[type="number"] { -moz-appearance: textfield; }
+  .form-input[type="number"]::-webkit-outer-spin-button, .form-input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .filter-row { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+  .filter-row .form-input, .filter-row .form-select { flex: 1; min-width: 140px; }
+  .empty { text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 14px; }
+  .empty-icon { font-size: 32px; margin-bottom: 8px; opacity: 0.5; }
+  .date-header { font-size: 13px; font-weight: 600; color: var(--text-secondary); margin: 20px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .date-header .total-dia { color: var(--text); font-weight: 500; }
+  .item-desc { color: var(--text-muted); font-size: 13px; }
+  .row-actions { opacity: 0; transition: opacity var(--transition); display: flex; gap: 6px; justify-content: center; }
+  tr:hover .row-actions, tr:focus-within .row-actions { opacity: 1; }
+  .cliente-card { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid var(--border); }
+  .cliente-card:last-child { border-bottom: none; }
+  .cliente-nome { font-weight: 500; font-size: 14px; }
+  .cliente-meta { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+  .cliente-valor { font-size: 16px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .pendente-card { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-radius: var(--radius-sm); background: var(--bg); border: 1px solid var(--border); margin-bottom: 8px; transition: var(--transition); }
+  .pendente-card:hover { border-color: var(--danger); }
+  .pendente-nome { font-weight: 500; }
+  .pendente-valor { font-weight: 600; font-variant-numeric: tabular-nums; color: var(--danger); }
+  .toast { position: fixed; bottom: 24px; right: 24px; background: var(--surface); color: var(--text); padding: 14px 20px; border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: var(--shadow); font-size: 14px; font-weight: 500; transform: translateY(100px); opacity: 0; transition: all 0.3s ease; z-index: 1000; }
+  .toast.show { transform: translateY(0); opacity: 1; }
+  .progress-bar { height: 6px; background: var(--bg); border-radius: 3px; overflow: hidden; margin-top: 8px; }
+  .progress-fill { height: 100%; border-radius: 3px; transition: width 0.5s ease; }
+  .progress-fill.success { background: var(--success); }
+  .progress-fill.warning { background: var(--warning); }
+  .item-row { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
+  .item-row .qtd-input { width: 70px; flex-shrink: 0; text-align: center; }
+  .item-row .produto-input { flex: 1; }
+  .item-row .btn-remove-item { padding: 8px; background: var(--danger-bg); color: var(--danger); border: none; border-radius: 8px; cursor: pointer; font-size: 13px; }
+  .item-row .btn-remove-item:hover { background: rgba(239,68,68,0.2); }
+  .items-container { margin-bottom: 10px; }
+  .btn-add-item { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: var(--radius-sm); border: 1px dashed var(--border); background: transparent; color: var(--text-secondary); font-size: 13px; font-weight: 500; cursor: pointer; transition: var(--transition); font-family: inherit; }
+  .btn-add-item:hover { border-color: var(--accent); color: var(--accent); }
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none; align-items: center; justify-content: center; z-index: 999; padding: 20px; backdrop-filter: blur(4px); }
+  .modal-overlay.active { display: flex; }
+  .modal { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; width: 100%; max-width: 480px; box-shadow: var(--shadow-lg); animation: modalIn 0.2s ease; }
+  @keyframes modalIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+  .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+  .modal-title { font-size: 17px; font-weight: 600; }
+  .modal-close { background: none; border: none; color: var(--text-muted); font-size: 22px; cursor: pointer; width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; transition: var(--transition); }
+  .modal-close:hover { background: var(--bg); color: var(--text); }
+  .modal-footer { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+  .data-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+  .data-info { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; font-size: 13px; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.7; }
+  .data-info code { background: var(--surface); padding: 2px 6px; border-radius: 4px; font-family: monospace; color: var(--accent); }
+  .file-input-wrapper { position: relative; overflow: hidden; display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px; border-radius: var(--radius-sm); border: none; font-size: 14px; font-weight: 500; cursor: pointer; background: var(--surface); color: var(--text); transition: var(--transition); font-family: inherit; }
+  .file-input-wrapper:hover { background: var(--surface-hover); }
+  .file-input-wrapper input[type=file] { position: absolute; left: 0; top: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+  @media (max-width: 600px) {
+    .container { padding: 12px; }
+    header h1 { font-size: 18px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .stat-value { font-size: 20px; }
+    .card { padding: 14px; }
+    table { font-size: 13px; }
+    th, td { padding: 8px 6px; }
+    .filter-row { flex-direction: column; }
+    .filter-row .form-input, .filter-row .form-select { min-width: 100%; }
+    .tabs { padding: 3px; }
+    .tab { padding: 8px 12px; font-size: 13px; }
+    .row-actions { opacity: 1; }
+    .item-row { flex-wrap: wrap; }
+    .item-row .qtd-input { width: 60px; }
+    .data-actions { flex-direction: column; }
+    .data-actions .btn, .file-input-wrapper { width: 100%; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div>
+      <h1>🍪 Controle de Vendas</h1>
+      <div class="subtitle">Brownies, cookies, alfajores e mais</div>
+    </div>
+    <button class="btn btn-success" onclick="exportarCSV()">📊 Exportar CSV</button>
+  </header>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showPanel('dashboard')" data-panel="dashboard">Dashboard</button>
+    <button class="tab" onclick="showPanel('vendas')" data-panel="vendas">Todas as vendas</button>
+    <button class="tab" onclick="showPanel('clientes')" data-panel="clientes">Clientes</button>
+    <button class="tab" onclick="showPanel('pendencias')" data-panel="pendencias">Pendências</button>
+
+  </div>
+
+  <div id="dashboard" class="panel active">
+    <div class="stats-grid">
+      <div class="stat-box"><div class="stat-label">Total vendido</div><div class="stat-value" id="dash-total">R$ 0,00</div><div class="stat-sub">desde o início</div></div>
+      <div class="stat-box"><div class="stat-label">Recebido</div><div class="stat-value success" id="dash-recebido">R$ 0,00</div><div class="stat-sub" id="dash-pct-rec">0%</div><div class="progress-bar"><div class="progress-fill success" id="dash-bar-rec" style="width:0%"></div></div></div>
+      <div class="stat-box"><div class="stat-label">A receber</div><div class="stat-value danger" id="dash-pendente">R$ 0,00</div><div class="stat-sub" id="dash-pct-pen">0%</div><div class="progress-bar"><div class="progress-fill warning" id="dash-bar-pen" style="width:0%"></div></div></div>
+      <div class="stat-box"><div class="stat-label">Vendas</div><div class="stat-value" id="dash-qtd">0</div><div class="stat-sub" id="dash-itens">0 itens</div></div>
+    </div>
+    <div class="card"><div class="card-title">📅 Total por mês</div><div id="dash-meses"></div></div>
+    <div class="card"><div class="card-title">📆 Total por dia (últimos 10)</div><div id="dash-dias"></div></div>
+  </div>
+
+  <div id="vendas" class="panel">
+    <div class="filter-row">
+      <input type="text" id="filtro-cliente" class="form-input" placeholder="Filtrar por cliente..." oninput="renderVendas()">
+      <select id="filtro-mes" class="form-select" onchange="renderVendas()"><option value="">Todos os meses</option></select>
+      <select id="filtro-status" class="form-select" onchange="renderVendas()"><option value="">Todos os status</option><option value="pago">Pago</option><option value="pendente">Pendente</option></select>
+    </div>
+    <div id="lista-vendas"></div>
+  </div>
+
+  <div id="clientes" class="panel">
+    <div class="card"><div class="card-title">👥 Resumo por cliente</div><div id="lista-clientes"></div></div>
+  </div>
+
+  <div id="pendencias" class="panel">
+    <div class="card"><div class="card-title">⚠️ Quem deve</div><div id="lista-devedores"></div></div>
+    <div class="card"><div class="card-title">✅ Quem pagou</div><div id="lista-pagos"></div></div>
+  </div>
+
+  <div id="cadastrar" class="panel">
+    <div class="card">
+      <div class="card-title">📝 Nova venda</div>
+      <div class="form-group">
+        <label class="form-label">Data da venda</label>
+        <input type="date" id="nova-data" class="form-input">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Cliente</label>
+        <input type="text" id="nova-cliente" class="form-input" placeholder="Ex: Maria" list="clientes-datalist">
+        <datalist id="clientes-datalist"></datalist>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Itens vendidos</label>
+        <div class="items-container" id="novo-itens-container"></div>
+        <button class="btn-add-item" onclick="addItemRow('novo-itens-container')">➕ Adicionar item</button>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Valor total (R$)</label>
+        <input type="number" id="nova-valor" class="form-input" placeholder="0,00" step="0.01" min="0">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Status</label>
+        <select id="nova-status" class="form-select"><option value="pago">✅ Pago</option><option value="pendente">⏳ Pendente / A receber</option></select>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <button class="btn btn-primary" onclick="cadastrarVenda()">💾 Salvar venda</button>
+        <button class="btn" onclick="limparForm()">Limpar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="dados" class="panel">
+    <div class="card">
+      <div class="card-title">💾 Gerenciar dados</div>
+      <div class="data-info">
+        💡 <strong>Fonte de dados:</strong> <span id="data-source-info">Carregando...</span><br>
+        📁 O app tenta carregar automaticamente o arquivo <code>dados.json</code> na mesma pasta. Se não encontrar, usa os dados embutidos.<br>
+        🔒 Os dados ficam salvos no <code>localStorage</code> do navegador para funcionamento offline.
+      </div>
+      <div class="data-actions">
+        <button class="btn btn-primary" onclick="exportarJSON()">📤 Exportar JSON completo</button>
+        <button class="btn btn-success" onclick="exportarCSV()">📊 Exportar vendas (CSV)</button>
+        <div class="file-input-wrapper btn">
+          📥 Importar JSON
+          <input type="file" id="import-json" accept=".json" onchange="importarJSON(this)">
+        </div>
+        <button class="btn btn-danger" onclick="limparTudo()">🗑 Limpar todos os dados</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">📋 Estrutura do banco de dados</div>
+      <div class="data-info">
+        O arquivo <code>dados.json</code> segue esta estrutura, pronta para migração futura:<br><br>
+        <code>produtos</code> — id, nome, categoria, preco_sugerido, ativo<br>
+        <code>clientes</code> — id, nome, telefone, observacoes<br>
+        <code>vendas</code> — id, data, cliente_id, cliente_nome, itens[], valor_total, status, observacoes<br><br>
+        Cada item da venda contém: qtd, produto, valor_unitario.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<datalist id="produtos-datalist"></datalist>
+<div class="toast" id="toast"></div>
+
+<script>
+const DADOS_EMBUTIDOS = {"versao":"1.1","ultima_atualizacao":"2026-07-31","meta":{"descricao":"Dados de controle de vendas de doces","moeda":"BRL","formato_data":"YYYY-MM-DD"},"produtos":[{"id":1,"nome":"CX doce","categoria":"CX doce","preco_sugerido":0,"ativo":true},{"id":2,"nome":"alfajor","categoria":"alfajor","preco_sugerido":0,"ativo":true},{"id":3,"nome":"bolo","categoria":"bolo","preco_sugerido":0,"ativo":true},{"id":4,"nome":"bolos","categoria":"bolos","preco_sugerido":0,"ativo":true},{"id":5,"nome":"brownie","categoria":"brownie","preco_sugerido":0,"ativo":true},{"id":6,"nome":"brownies","categoria":"brownies","preco_sugerido":0,"ativo":true},{"id":7,"nome":"cookie","categoria":"cookie","preco_sugerido":0,"ativo":true},{"id":8,"nome":"cookies","categoria":"cookies","preco_sugerido":0,"ativo":true},{"id":9,"nome":"cookies grande","categoria":"cookies grande","preco_sugerido":0,"ativo":true},{"id":10,"nome":"cookies grandes","categoria":"cookies grandes","preco_sugerido":0,"ativo":true},{"id":11,"nome":"cookies peq","categoria":"cookies peq","preco_sugerido":0,"ativo":true},{"id":12,"nome":"cookies pote","categoria":"cookies pote","preco_sugerido":0,"ativo":true},{"id":13,"nome":"cx doces","categoria":"cx doces","preco_sugerido":0,"ativo":true},{"id":14,"nome":"grande","categoria":"grande","preco_sugerido":0,"ativo":true}],"clientes":[{"id":1,"nome":"Adenancira","telefone":"","observacoes":""},{"id":2,"nome":"Antonio","telefone":"","observacoes":""},{"id":3,"nome":"Bruno","telefone":"","observacoes":""},{"id":4,"nome":"Camila","telefone":"","observacoes":""},{"id":5,"nome":"Carlo Miguel","telefone":"","observacoes":""},{"id":6,"nome":"Carlos miguel","telefone":"","observacoes":""},{"id":7,"nome":"Carol","telefone":"","observacoes":""},{"id":8,"nome":"Cinthia","telefone":"","observacoes":""},{"id":9,"nome":"Cintia","telefone":"","observacoes":""},{"id":10,"nome":"Daiane","telefone":"","observacoes":""},{"id":11,"nome":"Danieli","telefone":"","observacoes":""},{"id":12,"nome":"Darcy","telefone":"","observacoes":""},{"id":13,"nome":"Dorys","telefone":"","observacoes":""},{"id":14,"nome":"Dra idiko","telefone":"","observacoes":""},{"id":15,"nome":"Elisangela","telefone":"","observacoes":""},{"id":16,"nome":"Eu","telefone":"","observacoes":""},{"id":17,"nome":"Fernanda","telefone":"","observacoes":""},{"id":18,"nome":"Fernanda W","telefone":"","observacoes":""},{"id":19,"nome":"Grazi","telefone":"","observacoes":""},{"id":20,"nome":"Graziela","telefone":"","observacoes":""},{"id":21,"nome":"Gustavo","telefone":"","observacoes":""},{"id":22,"nome":"Ingrid","telefone":"","observacoes":""},{"id":23,"nome":"Jessica","telefone":"","observacoes":""},{"id":24,"nome":"Joao","telefone":"","observacoes":""},{"id":25,"nome":"Juliana","telefone":"","observacoes":""},{"id":26,"nome":"Marcio","telefone":"","observacoes":""},{"id":27,"nome":"Milena","telefone":"","observacoes":""},{"id":28,"nome":"Natalia","telefone":"","observacoes":""},{"id":29,"nome":"Pamela","telefone":"","observacoes":""},{"id":30,"nome":"Patricia","telefone":"","observacoes":""},{"id":31,"nome":"Renata","telefone":"","observacoes":""},{"id":32,"nome":"Ricardo","telefone":"","observacoes":""},{"id":33,"nome":"Rosilene","telefone":"","observacoes":""},{"id":34,"nome":"Sabrina","telefone":"","observacoes":""},{"id":35,"nome":"Taina","telefone":"","observacoes":""},{"id":36,"nome":"Thaise","telefone":"","observacoes":""},{"id":37,"nome":"Victoria","telefone":"","observacoes":""}],"vendas":[{"id":1,"data":"2026-07-30","cliente_id":8,"cliente_nome":"Cinthia","itens":[{"qtd":1,"produto":"brownie","valor_unitario":10.0}],"valor_total":10.0,"status":"pago","observacoes":""},{"id":2,"data":"2026-07-30","cliente_id":2,"cliente_nome":"Antonio","itens":[{"qtd":1,"produto":"brownie","valor_unitario":10.0}],"valor_total":10.0,"status":"pago","observacoes":""},{"id":3,"data":"2026-07-30","cliente_id":18,"cliente_nome":"Fernanda W","itens":[{"qtd":1,"produto":"brownie","valor_unitario":10.0},{"qtd":1,"produto":"cookies","valor_unitario":10.0}],"valor_total":20.0,"status":"pendente","observacoes":""},{"id":4,"data":"2026-07-30","cliente_id":35,"cliente_nome":"Taina","itens":[{"qtd":1,"produto":"brownie","valor_unitario":10.0}],"valor_total":10.0,"status":"pendente","observacoes":""},{"id":5,"data":"2026-07-30","cliente_id":21,"cliente_nome":"Gustavo","itens":[{"qtd":1,"produto":"cookies","valor_unitario":10.0}],"valor_total":10.0,"status":"pendente","observacoes":""},{"id":6,"data":"2026-07-30","cliente_id":29,"cliente_nome":"Pamela","itens":[{"qtd":1,"produto":"cookies","valor_unitario":10.0}],"valor_total":10.0,"status":"pago","observacoes":""},{"id":7,"data":"2026-07-24","cliente_id":2,"cliente_nome":"Antonio","itens":[{"qtd":2,"produto":"cx doces","valor_unitario":10.0}],"valor_total":20.0,"status":"pago","observacoes":""},{"id":8,"data":"2026-07-24","cliente_id":25,"cliente_nome":"Juliana","itens":[{"qtd":2,"produto":"cookies grandes","valor_unitario":10.0}],"valor_total":20.0,"status":"pago","observacoes":""},{"id":9,"data":"2026-07-24","cliente_id":8,"cliente_nome":"Cinthia","itens":[{"qtd":1,"produto":"cookies grande","valor_unitario":10.0}],"valor_total":10.0,"status":"pendente","observacoes":""},{"id":10,"data":"2026-07-24","cliente_id":19,"cliente_nome":"Grazi","itens":[{"qtd":1,"produto":"cookies pote","valor_unitario":10.0}],"valor_total":10.0,"status":"pendente","observacoes":""},{"id":11,"data":"2026-07-24","cliente_id":27,"cliente_nome":"Milena","itens":[{"qtd":1,"produto":"cx doces","valor_unitario":10.0}],"valor_total":10.0,"status":"pendente","observacoes":""},{"id":12,"data":"2026-07-24","cliente_id":28,"cliente_nome":"Natalia","itens":[{"qtd":1,"produto":"cookies pote","valor_unitario":10.0}],"valor_total":10.0,"status":"pendente","observacoes":""},{"id":13,"data":"2026-07-24","cliente_id":4,"cliente_nome":"Camila","itens":[{"qtd":1,"produto":"CX doce","valor_unitario":10.0}],"valor_total":10.0,"status":"pendente","observacoes":""},{"id":14,"data":"2026-07-24","cliente_id":24,"cliente_nome":"Joao","itens":[{"qtd":1,"produto":"cx doces","valor_unitario":10.0}],"valor_total":10.0,"status":"pago","observacoes":""},{"id":15,"data":"2026-07-24","cliente_id":34,"cliente_nome":"Sabrina","itens":[{"qtd":1,"produto":"cx doces","valor_unitario":10.0}],"valor_total":10.0,"status":"pago","observacoes":""},{"id":16,"data":"2026-07-24","cliente_id":31,"cliente_nome":"Renata","itens":[{"qtd":1,"produto":"cx doces","valor_unitario":10.0}],"valor_total":10.0,"status":"pendente","observacoes":""},{"id":17,"data":"2026-07-17","cliente_id":2,"cliente_nome":"Antonio","itens":[{"qtd":1,"produto":"brownie","valor_unitario":7.0},{"qtd":1,"produto":"alfajor","valor_unitario":7.0}],"valor_total":14.0,"status":"pago","observacoes":""},{"id":18,"data":"2026-07-17","cliente_id":13,"cliente_nome":"Dorys","itens":[{"qtd":2,"produto":"alfajor","valor_unitario":6.0}],"valor_total":12.0,"status":"pendente","observacoes":""},{"id":19,"data":"2026-07-17","cliente_id":3,"cliente_nome":"Bruno","itens":[{"qtd":2,"produto":"brownie","valor_unitario":8.0}],"valor_total":16.0,"status":"pendente","observacoes":""},{"id":20,"data":"2026-07-17","cliente_id":34,"cliente_nome":"Sabrina","itens":[{"qtd":1,"produto":"brownie","valor_unitario":8.0}],"valor_total":8.0,"status":"pendente","observacoes":""},{"id":21,"data":"2026-07-10","cliente_id":3,"cliente_nome":"Bruno","itens":[{"qtd":2,"produto":"brownies","valor_unitario":6.0}],"valor_total":12.0,"status":"pendente","observacoes":""},{"id":22,"data":"2026-07-10","cliente_id":2,"cliente_nome":"Antonio","itens":[{"qtd":2,"produto":"brownie","valor_unitario":6.0}],"valor_total":12.0,"status":"pago","observacoes":""},{"id":23,"data":"2026-07-10","cliente_id":8,"cliente_nome":"Cinthia","itens":[{"qtd":1,"produto":"brownie","valor_unitario":5.0}],"valor_total":5.0,"status":"pendente","observacoes":""},{"id":24,"data":"2026-07-10","cliente_id":32,"cliente_nome":"Ricardo","itens":[{"qtd":1,"produto":"brownie","valor_unitario":5.0}],"valor_total":5.0,"status":"pago","observacoes":""},{"id":25,"data":"2026-07-10","cliente_id":37,"cliente_nome":"Victoria","itens":[{"qtd":1,"produto":"brownie","valor_unitario":5.0}],"valor_total":5.0,"status":"pendente","observacoes":""},{"id":26,"data":"2026-07-01","cliente_id":2,"cliente_nome":"Antonio","itens":[{"qtd":2,"produto":"brownie","valor_unitario":6.0}],"valor_total":12.0,"status":"pendente","observacoes":""},{"id":27,"data":"2026-07-01","cliente_id":34,"cliente_nome":"Sabrina","itens":[{"qtd":1,"produto":"brownie","valor_unitario":6.0}],"valor_total":6.0,"status":"pendente","observacoes":""},{"id":28,"data":"2026-07-01","cliente_id":9,"cliente_nome":"Cintia","itens":[{"qtd":1,"produto":"brownie","valor_unitario":6.0}],"valor_total":6.0,"status":"pendente","observacoes":""},{"id":29,"data":"2026-07-01","cliente_id":11,"cliente_nome":"Danieli","itens":[{"qtd":2,"produto":"brownie","valor_unitario":6.0}],"valor_total":12.0,"status":"pendente","observacoes":""},{"id":30,"data":"2026-07-01","cliente_id":3,"cliente_nome":"Bruno","itens":[{"qtd":3,"produto":"brownie","valor_unitario":6.0}],"valor_total":18.0,"status":"pendente","observacoes":""},{"id":31,"data":"2026-06-22","cliente_id":2,"cliente_nome":"Antonio","itens":[{"qtd":2,"produto":"alfajor","valor_unitario":5.67},{"qtd":1,"produto":"cookie","valor_unitario":5.67}],"valor_total":17.0,"status":"pendente","observacoes":""},{"id":32,"data":"2026-06-22","cliente_id":5,"cliente_nome":"Carlo Miguel","itens":[{"qtd":1,"produto":"alfajor","valor_unitario":6.0},{"qtd":1,"produto":"cookies","valor_unitario":6.0}],"valor_total":12.0,"status":"pendente","observacoes":""},{"id":33,"data":"2026-06-22","cliente_id":20,"cliente_nome":"Graziela","itens":[{"qtd":1,"produto":"cookies","valor_unitario":7.0}],"valor_total":7.0,"status":"pendente","observacoes":""},{"id":34,"data":"2026-06-22","cliente_id":16,"cliente_nome":"Eu","itens":[{"qtd":2,"produto":"cookies","valor_unitario":7.0}],"valor_total":14.0,"status":"pendente","observacoes":""},{"id":35,"data":"2026-06-10","cliente_id":6,"cliente_nome":"Carlos miguel","itens":[{"qtd":1,"produto":"brownie","valor_unitario":6.0}],"valor_total":6.0,"status":"pendente","observacoes":""},{"id":36,"data":"2026-06-10","cliente_id":2,"cliente_nome":"Antonio","itens":[{"qtd":2,"produto":"brownie","valor_unitario":6.0}],"valor_total":12.0,"status":"pendente","observacoes":""},{"id":37,"data":"2026-06-10","cliente_id":33,"cliente_nome":"Rosilene","itens":[{"qtd":1,"produto":"brownie","valor_unitario":6.0}],"valor_total":6.0,"status":"pendente","observacoes":""},{"id":38,"data":"2026-06-10","cliente_id":22,"cliente_nome":"Ingrid","itens":[{"qtd":1,"produto":"brownie","valor_unitario":6.0}],"valor_total":6.0,"status":"pendente","observacoes":""},{"id":39,"data":"2026-06-10","cliente_id":7,"cliente_nome":"Carol","itens":[{"qtd":1,"produto":"brownie","valor_unitario":6.0}],"valor_total":6.0,"status":"pendente","observacoes":""},{"id":40,"data":"2026-06-10","cliente_id":20,"cliente_nome":"Graziela","itens":[{"qtd":1,"produto":"brownie","valor_unitario":6.0}],"valor_total":6.0,"status":"pendente","observacoes":""},{"id":41,"data":"2026-06-10","cliente_id":12,"cliente_nome":"Darcy","itens":[{"qtd":1,"produto":"brownie","valor_unitario":6.0}],"valor_total":6.0,"status":"pendente","observacoes":""},{"id":42,"data":"2026-06-03","cliente_id":2,"cliente_nome":"Antonio","itens":[{"qtd":2,"produto":"brownie","valor_unitario":6.0}],"valor_total":12.0,"status":"pendente","observacoes":""},{"id":43,"data":"2026-06-03","cliente_id":20,"cliente_nome":"Graziela","itens":[{"qtd":1,"produto":"brownie","valor_unitario":6.0}],"valor_total":6.0,"status":"pendente","observacoes":""},{"id":44,"data":"2026-06-03","cliente_id":36,"cliente_nome":"Thaise","itens":[{"qtd":1,"produto":"brownie","valor_unitario":6.0}],"valor_total":6.0,"status":"pendente","observacoes":""},{"id":45,"data":"2026-06-03","cliente_id":22,"cliente_nome":"Ingrid","itens":[{"qtd":2,"produto":"brownie","valor_unitario":6.0}],"valor_total":12.0,"status":"pendente","observacoes":""},{"id":46,"data":"2026-06-03","cliente_id":1,"cliente_nome":"Adenancira","itens":[{"qtd":1,"produto":"brownie","valor_unitario":6.0}],"valor_total":6.0,"status":"pendente","observacoes":""},{"id":47,"data":"2026-06-03","cliente_id":33,"cliente_nome":"Rosilene","itens":[{"qtd":1,"produto":"brownie","valor_unitario":6.0}],"valor_total":6.0,"status":"pendente","observacoes":""},{"id":48,"data":"2026-06-03","cliente_id":14,"cliente_nome":"Dra idiko","itens":[{"qtd":1,"produto":"brownie","valor_unitario":6.0}],"valor_total":6.0,"status":"pendente","observacoes":""},{"id":49,"data":"2026-06-03","cliente_id":17,"cliente_nome":"Fernanda","itens":[{"qtd":3,"produto":"cookies","valor_unitario":6.0}],"valor_total":18.0,"status":"pendente","observacoes":""},{"id":50,"data":"2026-05-19","cliente_id":3,"cliente_nome":"Bruno","itens":[{"qtd":2,"produto":"brownie","valor_unitario":6.0}],"valor_total":12.0,"status":"pago","observacoes":""},{"id":51,"data":"2026-05-19","cliente_id":30,"cliente_nome":"Patricia","itens":[{"qtd":2,"produto":"brownie","valor_unitario":6.0}],"valor_total":12.0,"status":"pago","observacoes":""},{"id":52,"data":"2026-05-19","cliente_id":2,"cliente_nome":"Antonio","itens":[{"qtd":3,"produto":"brownie","valor_unitario":6.0}],"valor_total":18.0,"status":"pago","observacoes":""},{"id":53,"data":"2026-05-06","cliente_id":8,"cliente_nome":"Cinthia","itens":[{"qtd":1,"produto":"brownie","valor_unitario":6.0}],"valor_total":6.0,"status":"pago","observacoes":""},{"id":54,"data":"2026-05-06","cliente_id":23,"cliente_nome":"Jessica","itens":[{"qtd":2,"produto":"brownie","valor_unitario":6.0}],"valor_total":12.0,"status":"pago","observacoes":""},{"id":55,"data":"2026-05-06","cliente_id":2,"cliente_nome":"Antonio","itens":[{"qtd":2,"produto":"brownie","valor_unitario":6.0}],"valor_total":12.0,"status":"pago","observacoes":""},{"id":56,"data":"2026-05-06","cliente_id":13,"cliente_nome":"Dorys","itens":[{"qtd":2,"produto":"brownie","valor_unitario":6.0}],"valor_total":12.0,"status":"pago","observacoes":""},{"id":57,"data":"2026-04-24","cliente_id":8,"cliente_nome":"Cinthia","itens":[{"qtd":1,"produto":"brownie","valor_unitario":9.0}],"valor_total":9.0,"status":"pago","observacoes":""},{"id":58,"data":"2026-04-24","cliente_id":2,"cliente_nome":"Antonio","itens":[{"qtd":1,"produto":"brownie","valor_unitario":9.0}],"valor_total":9.0,"status":"pago","observacoes":""},{"id":59,"data":"2026-04-24","cliente_id":22,"cliente_nome":"Ingrid","itens":[{"qtd":1,"produto":"brownie","valor_unitario":9.0}],"valor_total":9.0,"status":"pago","observacoes":""},{"id":60,"data":"2026-04-24","cliente_id":36,"cliente_nome":"Thaise","itens":[{"qtd":1,"produto":"brownie","valor_unitario":9.0}],"valor_total":9.0,"status":"pago","observacoes":""},{"id":61,"data":"2026-04-24","cliente_id":15,"cliente_nome":"Elisangela","itens":[{"qtd":1,"produto":"brownie","valor_unitario":9.0}],"valor_total":9.0,"status":"pago","observacoes":""},{"id":62,"data":"2026-04-24","cliente_id":3,"cliente_nome":"Bruno","itens":[{"qtd":1,"produto":"brownie","valor_unitario":9.0}],"valor_total":9.0,"status":"pago","observacoes":""},{"id":63,"data":"2026-03-07","cliente_id":2,"cliente_nome":"Antonio","itens":[{"qtd":1,"produto":"brownie","valor_unitario":10.0}],"valor_total":10.0,"status":"pago","observacoes":""},{"id":64,"data":"2026-03-02","cliente_id":23,"cliente_nome":"Jessica","itens":[{"qtd":2,"produto":"cookies peq","valor_unitario":7.33},{"qtd":1,"produto":"grande","valor_unitario":7.33}],"valor_total":22.0,"status":"pago","observacoes":""},{"id":65,"data":"2026-03-02","cliente_id":26,"cliente_nome":"Marcio","itens":[{"qtd":2,"produto":"cookies","valor_unitario":10.0}],"valor_total":20.0,"status":"pago","observacoes":""},{"id":66,"data":"2026-03-02","cliente_id":2,"cliente_nome":"Antonio","itens":[{"qtd":1,"produto":"brownie","valor_unitario":6.0},{"qtd":1,"produto":"cookies","valor_unitario":6.0}],"valor_total":12.0,"status":"pago","observacoes":""},{"id":67,"data":"2026-03-02","cliente_id":16,"cliente_nome":"Eu","itens":[{"qtd":1,"produto":"cookie","valor_unitario":6.0}],"valor_total":6.0,"status":"pago","observacoes":""},{"id":68,"data":"2026-02-23","cliente_id":2,"cliente_nome":"Antonio","itens":[{"qtd":2,"produto":"alfajor","valor_unitario":10.0}],"valor_total":20.0,"status":"pago","observacoes":""},{"id":69,"data":"2026-02-23","cliente_id":4,"cliente_nome":"Camila","itens":[{"qtd":1,"produto":"alfajor","valor_unitario":10.0}],"valor_total":10.0,"status":"pago","observacoes":""},{"id":70,"data":"2026-02-23","cliente_id":11,"cliente_nome":"Danieli","itens":[{"qtd":1,"produto":"alfajor","valor_unitario":10.0}],"valor_total":10.0,"status":"pago","observacoes":""},{"id":71,"data":"2026-02-23","cliente_id":13,"cliente_nome":"Dorys","itens":[{"qtd":1,"produto":"alfajor","valor_unitario":10.0}],"valor_total":10.0,"status":"pago","observacoes":""},{"id":72,"data":"2026-02-23","cliente_id":19,"cliente_nome":"Grazi","itens":[{"qtd":1,"produto":"alfajor","valor_unitario":10.0}],"valor_total":10.0,"status":"pago","observacoes":""},{"id":73,"data":"2026-02-23","cliente_id":16,"cliente_nome":"Eu","itens":[{"qtd":1,"produto":"alfajor","valor_unitario":8.0}],"valor_total":8.0,"status":"pago","observacoes":""},{"id":74,"data":"2026-02-03","cliente_id":13,"cliente_nome":"Dorys","itens":[{"qtd":1,"produto":"brownie","valor_unitario":7.0}],"valor_total":7.0,"status":"pago","observacoes":""},{"id":75,"data":"2026-02-03","cliente_id":9,"cliente_nome":"Cintia","itens":[{"qtd":1,"produto":"brownie","valor_unitario":7.0}],"valor_total":7.0,"status":"pago","observacoes":""},{"id":76,"data":"2026-02-03","cliente_id":11,"cliente_nome":"Danieli","itens":[{"qtd":1,"produto":"brownie","valor_unitario":10.0}],"valor_total":10.0,"status":"pago","observacoes":""},{"id":77,"data":"2026-02-03","cliente_id":22,"cliente_nome":"Ingrid","itens":[{"qtd":1,"produto":"brownie","valor_unitario":7.0}],"valor_total":7.0,"status":"pago","observacoes":""},{"id":78,"data":"2026-02-03","cliente_id":10,"cliente_nome":"Daiane","itens":[{"qtd":1,"produto":"brownie","valor_unitario":10.0}],"valor_total":10.0,"status":"pago","observacoes":""},{"id":79,"data":"2026-02-03","cliente_id":3,"cliente_nome":"Bruno","itens":[{"qtd":2,"produto":"brownie","valor_unitario":8.5}],"valor_total":17.0,"status":"pago","observacoes":""},{"id":80,"data":"2026-02-03","cliente_id":30,"cliente_nome":"Patricia","itens":[{"qtd":1,"produto":"brownie","valor_unitario":10.0}],"valor_total":10.0,"status":"pago","observacoes":""},{"id":81,"data":"2026-01-29","cliente_id":34,"cliente_nome":"Sabrina","itens":[{"qtd":1,"produto":"bolo","valor_unitario":6.0}],"valor_total":6.0,"status":"pago","observacoes":""},{"id":82,"data":"2026-01-29","cliente_id":2,"cliente_nome":"Antonio","itens":[{"qtd":1,"produto":"bolo","valor_unitario":6.0}],"valor_total":6.0,"status":"pago","observacoes":""},{"id":83,"data":"2026-01-29","cliente_id":22,"cliente_nome":"Ingrid","itens":[{"qtd":1,"produto":"bolo","valor_unitario":6.0}],"valor_total":6.0,"status":"pago","observacoes":""},{"id":84,"data":"2026-01-29","cliente_id":24,"cliente_nome":"Joao","itens":[{"qtd":1,"produto":"bolo","valor_unitario":6.0}],"valor_total":6.0,"status":"pago","observacoes":""},{"id":85,"data":"2026-01-29","cliente_id":32,"cliente_nome":"Ricardo","itens":[{"qtd":2,"produto":"bolos","valor_unitario":6.0}],"valor_total":12.0,"status":"pago","observacoes":""}]};
+
+const STORAGE_KEY = 'vendas_doces_v5_1';
+let vendas = [];
+let produtosCatalogo = [];
+let clientesCatalogo = [];
+
+function formatMoney(v) { return 'R$ ' + v.toFixed(2).replace('.', ','); }
+function formatDate(d) { const [y,m,day] = d.split('-'); return day + '/' + m + '/' + y; }
+function showToast(msg) { const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2500); }
+function formatItens(itens) { if (!Array.isArray(itens)) return String(itens); return itens.map(i => String(i.qtd).padStart(2, '0') + ' ' + i.produto).join(', '); }
+
+function loadData() { try { const saved = localStorage.getItem(STORAGE_KEY); if (saved) { vendas = JSON.parse(saved); return true; } } catch (e) {} return false; }
+
+function normalizarVenda(v) {
+  return { id: v.id, data: v.data, cliente: v.cliente_nome || v.cliente, itens: Array.isArray(v.itens) ? v.itens : [], valor: v.valor_total || v.valor || 0, status: v.status || 'pendente' };
+}
+
+function carregarDadosJSON(dados) {
+  produtosCatalogo = dados.produtos || [];
+  clientesCatalogo = dados.clientes || [];
+  vendas = (dados.vendas || []).map(normalizarVenda);
+}
+
+function carregarDadosEmbutidos() { carregarDadosJSON(DADOS_EMBUTIDOS); }
+
+async function tentarCarregarJSON() {
+  if (loadData()) { console.log('[App] Dados do navegador.'); return; }
+  if (window.location.protocol !== 'file:') {
+    try {
+      const url = new URL('dados.json', window.location.href).href;
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      carregarDadosJSON(await response.json());
+      console.log('[App] Dados carregados de dados.json'); return;
+    } catch (err) { console.log('[App] JSON não disponível:', err.message); }
+  }
+  carregarDadosEmbutidos();
+}
+
+function exportarCSV() {
+  let csv = 'id;data;cliente;produtos;qtd_total;valor_total;status\n';
+  vendas.forEach(v => {
+    const produtos = Array.isArray(v.itens) ? v.itens.map(i => i.qtd + 'x ' + i.produto).join('; ') : '';
+    const qtdTotal = Array.isArray(v.itens) ? v.itens.reduce((s, i) => s + (i.qtd || 0), 0) : 0;
+    csv += [v.id || '', v.data, '"' + v.cliente + '"', '"' + produtos + '"', qtdTotal, v.valor.toFixed(2).replace('.', ','), v.status].join(';') + '\n';
+  });
+  const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = 'vendas_' + new Date().toISOString().slice(0, 10) + '.csv'; a.click(); URL.revokeObjectURL(url);
+  showToast('📊 CSV exportado!');
+}
+
+function showPanel(id) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelector('.tab[data-panel="' + id + '"]').classList.add('active');
+  document.getElementById(id).classList.add('active');
+  if (id === 'dashboard') renderDashboard();
+  if (id === 'vendas') renderVendas();
+  if (id === 'clientes') renderClientes();
+  if (id === 'pendencias') renderPendencias();
+}
+
+function renderDashboard() {
+  const total = vendas.reduce((s,v) => s + v.valor, 0);
+  const recebido = vendas.filter(v => v.status === 'pago').reduce((s,v) => s + v.valor, 0);
+  const pendente = total - recebido;
+  const pctRec = total > 0 ? Math.round(recebido / total * 100) : 0;
+  const pctPen = total > 0 ? Math.round(pendente / total * 100) : 0;
+  document.getElementById('dash-total').textContent = formatMoney(total);
+  document.getElementById('dash-recebido').textContent = formatMoney(recebido);
+  document.getElementById('dash-pct-rec').textContent = pctRec + '% do total';
+  document.getElementById('dash-pendente').textContent = formatMoney(pendente);
+  document.getElementById('dash-pct-pen').textContent = pctPen + '% do total';
+  document.getElementById('dash-qtd').textContent = vendas.length;
+  document.getElementById('dash-bar-rec').style.width = pctRec + '%';
+  document.getElementById('dash-bar-pen').style.width = pctPen + '%';
+  const totalItens = vendas.reduce((s, v) => { if (!Array.isArray(v.itens)) return s; return s + v.itens.reduce((a, i) => a + (parseInt(i.qtd) || 0), 0); }, 0);
+  document.getElementById('dash-itens').textContent = totalItens + ' itens';
+  const meses = {};
+  vendas.forEach(v => { const mes = v.data.slice(0, 7); if (!meses[mes]) meses[mes] = { total: 0, recebido: 0, pendente: 0, qtd: 0 }; meses[mes].total += v.valor; meses[mes].qtd += 1; if (v.status === 'pago') meses[mes].recebido += v.valor; else meses[mes].pendente += v.valor; });
+  const mesesOrd = Object.keys(meses).sort().reverse();
+  let htmlM = '<table><tr><th>Mês</th><th>Vendas</th><th class="text-right">Total</th><th class="text-right">Recebido</th><th class="text-right">A receber</th></tr>';
+  mesesOrd.forEach(m => { const d = meses[m]; const [y, mo] = m.split('-'); htmlM += '<tr><td>' + mo + '/' + y + '</td><td class="text-center">' + d.qtd + '</td><td class="text-right valor">' + formatMoney(d.total) + '</td><td class="text-right valor" style="color:var(--success)">' + formatMoney(d.recebido) + '</td><td class="text-right valor" style="color:var(--danger)">' + formatMoney(d.pendente) + '</td></tr>'; });
+  htmlM += '</table>';
+  document.getElementById('dash-meses').innerHTML = htmlM;
+  const dias = {};
+  vendas.forEach(v => { if (!dias[v.data]) dias[v.data] = { total: 0, qtd: 0 }; dias[v.data].total += v.valor; dias[v.data].qtd += 1; });
+  const diasOrd = Object.keys(dias).sort().reverse().slice(0, 10);
+  let htmlD = '<table><tr><th>Data</th><th class="text-center">Vendas</th><th class="text-right">Total do dia</th></tr>';
+  diasOrd.forEach(d => { htmlD += '<tr><td>' + formatDate(d) + '</td><td class="text-center">' + dias[d].qtd + '</td><td class="text-right valor">' + formatMoney(dias[d].total) + '</td></tr>'; });
+  htmlD += '</table>';
+  document.getElementById('dash-dias').innerHTML = htmlD;
+}
+
+function renderVendas() {
+  const filtroCliente = document.getElementById('filtro-cliente').value.toLowerCase();
+  const filtroMes = document.getElementById('filtro-mes').value;
+  const filtroStatus = document.getElementById('filtro-status').value;
+  let filtradas = vendas.filter(v => {
+    if (filtroCliente && !v.cliente.toLowerCase().includes(filtroCliente)) return false;
+    if (filtroMes && !v.data.startsWith(filtroMes)) return false;
+    if (filtroStatus && v.status !== filtroStatus) return false;
+    return true;
+  }).sort((a, b) => b.data.localeCompare(a.data));
+  if (!filtradas.length) { document.getElementById('lista-vendas').innerHTML = '<div class="empty"><div class="empty-icon">📭</div>Nenhuma venda encontrada</div>'; return; }
+  const porData = {};
+  filtradas.forEach(v => { if (!porData[v.data]) porData[v.data] = []; porData[v.data].push(v); });
+  const datas = Object.keys(porData).sort().reverse();
+  let html = '';
+  datas.forEach(d => {
+    const totalDia = porData[d].reduce((s, v) => s + v.valor, 0);
+    html += '<div class="date-header"><span>' + formatDate(d) + '</span><span class="total-dia">' + formatMoney(totalDia) + ' — ' + porData[d].length + ' venda' + (porData[d].length > 1 ? 's' : '') + '</span></div>';
+    html += '<table><tr><th>Cliente</th><th>Itens</th><th class="text-right">Valor</th><th class="text-center">Status</th></tr>';
+    porData[d].forEach((v) => {
+      const badge = v.status === 'pago' ? '<span class="badge badge-pago">Pago</span>' : '<span class="badge badge-pendente">Pendente</span>';
+      const itensStr = formatItens(v.itens);
+      html += '<tr><td>' + v.cliente + '</td><td class="item-desc">' + itensStr + '</td><td class="text-right valor">' + formatMoney(v.valor) + '</td><td class="text-center">' + badge + '</td></tr>';
+    });
+    html += '</table>';
+  });
+  document.getElementById('lista-vendas').innerHTML = html;
+}
+
+function renderClientes() {
+  const resumo = {};
+  vendas.forEach(v => { const c = v.cliente; if (!resumo[c]) resumo[c] = { total: 0, recebido: 0, pendente: 0, qtd: 0 }; resumo[c].total += v.valor; resumo[c].qtd += 1; if (v.status === 'pago') resumo[c].recebido += v.valor; else resumo[c].pendente += v.valor; });
+  const clientes = Object.keys(resumo).sort((a, b) => resumo[b].total - resumo[a].total);
+  let html = '';
+  clientes.forEach(c => { const d = resumo[c]; html += '<div class="cliente-card"><div><div class="cliente-nome">' + c + '</div><div class="cliente-meta">' + d.qtd + ' venda' + (d.qtd > 1 ? 's' : '') + ' — ' + formatMoney(d.recebido) + ' recebido / ' + formatMoney(d.pendente) + ' pendente</div></div><div class="cliente-valor">' + formatMoney(d.total) + '</div></div>'; });
+  document.getElementById('lista-clientes').innerHTML = html;
+}
+
+function renderPendencias() {
+  const devedores = {}; const pagos = {};
+  vendas.forEach(v => { if (v.status === 'pendente') { if (!devedores[v.cliente]) devedores[v.cliente] = 0; devedores[v.cliente] += v.valor; } else { if (!pagos[v.cliente]) pagos[v.cliente] = 0; pagos[v.cliente] += v.valor; } });
+  const devList = Object.entries(devedores).sort((a, b) => b[1] - a[1]);
+  let htmlDev = '';
+  if (!devList.length) { htmlDev = '<div class="empty"><div class="empty-icon">🎉</div>Ninguém deve!</div>'; }
+  else { devList.forEach(([c, v]) => { htmlDev += '<div class="pendente-card"><span class="pendente-nome">' + c + '</span><span class="pendente-valor">' + formatMoney(v) + '</span></div>'; }); }
+  document.getElementById('lista-devedores').innerHTML = htmlDev;
+  const pagList = Object.entries(pagos).sort((a, b) => b[1] - a[1]);
+  let htmlPag = '';
+  pagList.forEach(([c, v]) => { htmlPag += '<div class="pendente-card" style="border-color:var(--success)"><span class="pendente-nome">' + c + '</span><span class="pendente-valor" style="color:var(--success)">' + formatMoney(v) + '</span></div>'; });
+  document.getElementById('lista-pagos').innerHTML = htmlPag;
+}
+
+function initRender() {
+  const meses = [...new Set(vendas.map(v => v.data.slice(0, 7)))].sort().reverse();
+  const sel = document.getElementById('filtro-mes');
+  sel.innerHTML = '<option value="">Todos os meses</option>';
+  meses.forEach(m => { const [y, mo] = m.split('-'); sel.innerHTML += '<option value="' + m + '">' + mo + '/' + y + '</option>'; });
+  renderDashboard(); renderVendas(); renderClientes(); renderPendencias();
+}
+
+async function init() { await tentarCarregarJSON(); initRender(); }
+init();
+
+</script>
+</body>
+</html>
