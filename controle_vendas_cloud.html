@@ -278,7 +278,6 @@
 
 <script>
 
-// ========== CONFIGURACAO JSONBIN.IO ==========
 const BIN_ID = '6a6d431bda38895dfeaad903';
 const MASTER_KEY = '$2a$10$rxdZKKb3m/E6u8gu435sIORq.SVWjW8FNfkFzZ/nLT5af2N2i7Xma';
 const BIN_URL = 'https://api.jsonbin.io/v3/b/' + BIN_ID;
@@ -299,7 +298,6 @@ function showToast(msg) { const t = document.getElementById('toast'); t.textCont
 function parseItensString(str) { const partes = str.split(',').map(p => p.trim()).filter(Boolean); const resultado = []; partes.forEach(p => { const m = p.match(/^(\d+)\s+(.+)$/); if (m) resultado.push({ qtd: parseInt(m[1]), produto: m[2].trim() }); }); return resultado; }
 function formatItens(itens) { if (!Array.isArray(itens)) return String(itens); return itens.map(i => String(i.qtd).padStart(2, '0') + ' ' + i.produto).join(', '); }
 
-// ========== SINCRONIZACAO COM JSONBIN.IO ==========
 function setSyncStatus(status, msg) {
   const el = document.getElementById('sync-status');
   el.className = 'sync-badge ' + status;
@@ -424,7 +422,6 @@ async function forcarSincronizacao() {
   showToast('✅ Sincronizacao concluida!');
 }
 
-// ========== GERENCIAMENTO DE DADOS ==========
 function normalizarVenda(v) {
   return {
     id: v.id || nextId++,
@@ -465,13 +462,12 @@ function exportarJSON() {
 }
 
 function exportarCSV() {
-  let csv = 'id;data;cliente;produtos;qtd_total;valor_total;status;observacoes
-';
+  let csv = 'id;data;cliente;produtos;qtd_total;valor_total;status;observacoes' + String.fromCharCode(10);
   vendas.forEach(v => {
     const produtos = Array.isArray(v.itens) ? v.itens.map(i => i.qtd + 'x ' + i.produto).join('; ') : '';
     const qtdTotal = Array.isArray(v.itens) ? v.itens.reduce((s, i) => s + (i.qtd || 0), 0) : 0;
-    csv += [v.id || '', v.data, '"' + v.cliente + '"', '"' + produtos + '"', qtdTotal, v.valor.toFixed(2).replace('.', ','), v.status, '"' + (v.observacoes || '') + '"'].join(';') + '
-';
+    const valorStr = v.valor.toFixed(2).replace('.', ',');
+    csv += [v.id || '', v.data, '"' + v.cliente + '"', '"' + produtos + '"', qtdTotal, valorStr, v.status, '"' + (v.observacoes || '') + '"'].join(';') + String.fromCharCode(10);
   });
   const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8' });
   const url = URL.createObjectURL(blob);
@@ -499,26 +495,17 @@ function importarJSON(input) {
 }
 
 function limparTudo() {
-  if (!confirm('⚠️ Atencao! Isso vai apagar TODAS as vendas.
-
-Recomendamos fazer um backup antes (aba Dados → Exportar JSON).
-
-Ja fez backup? Clique OK para continuar, ou Cancelar para voltar.')) {
+  if (!confirm('⚠️ Atencao! Isso vai apagar TODAS as vendas. Recomendamos fazer um backup antes (aba Dados → Exportar JSON). Ja fez backup? Clique OK para continuar, ou Cancelar para voltar.')) {
     showToast('💡 Va na aba Dados e clique em "Exportar JSON completo" para fazer backup.');
     return;
   }
-  if (!confirm('Tem certeza que deseja apagar TODAS as vendas?
-
-Os produtos e nomes de clientes no autocomplete serao mantidos.
-
-Esta acao nao pode ser desfeita.')) return;
+  if (!confirm('Tem certeza que deseja apagar TODAS as vendas? Os produtos e nomes de clientes no autocomplete serao mantidos. Esta acao nao pode ser desfeita.')) return;
   vendas = [];
   saveToCloud();
   initRender();
   showToast('🗑 Todas as vendas foram apagadas!');
 }
 
-// ========== UI HELPERS ==========
 function addItemRow(containerId, qtd, produto) {
   const container = document.getElementById(containerId);
   const row = document.createElement('div');
@@ -549,8 +536,6 @@ function atualizarProdutosDatalist() {
   const dl = document.getElementById('produtos-datalist');
   dl.innerHTML = Array.from(produtos).sort().map(p => '<option value="' + p + '">').join('');
 }
-
-// ========== NAVEGACAO ==========
 function showPanel(id) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
@@ -564,7 +549,6 @@ function showPanel(id) {
   if (id === 'dados') atualizarInfoFonte();
 }
 
-// ========== RENDERIZACAO ==========
 function renderDashboard() {
   const total = vendas.reduce((s,v) => s + v.valor, 0);
   const recebido = vendas.filter(v => v.status === 'pago').reduce((s,v) => s + v.valor, 0);
@@ -745,10 +729,8 @@ function initRender() {
 }
 
 async function init() {
-  // Tenta carregar da nuvem primeiro
   const cloudOk = await loadFromCloud();
   if (!cloudOk) {
-    // Fallback: cache local
     if (loadLocalCache()) {
       showToast('📱 Usando dados do cache local');
     } else {
